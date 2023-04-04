@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex29Game.html</title>
+</head>
+<body>
+    <h1>가위 바위 보 게임 v1.1</h1>
+    <div id="my"></div>     <!-- 내가 낸 이미지 -->
+    <div id="com"></div>    <!-- 컴퓨터가 낸 이미지 -->
+    <dif id="result"></dif> <!-- 결과 메시지를 보여준다 -->
+
+    <script>
+        let obj1=document.querySelector('#my');
+        let obj2=document.querySelector('#com');
+        let obj3=document.querySelector('#result');
+
+        // #my에 가위 이미지 삽입하기
+        // obj1.innerHTML="<h1>안녕</h1>";
+        // obj1.innerHTML="<img src='./images/scissor.png' width='80px'>";
+        // 1. 가위,  2. 바위,  3.보
+        // prompt()로 가위, 바위, 보를 입력 받은 뒤
+
+        //컴퓨터가 랜덤하게 발생시킨 (1,2,3) 값과 경우의 수를 따져서 결과와 이미지를 출력하세요
+
+        let m = prompt('가위, 바위, 보 중에 하나를 입력하세요.');
+        if(!(m == '가위' || m == '바위' || m == '보')){
+            alert('잘못 입력하였습니다. 다시 입력해주세요.');
+            window.location.reload();
+        }
+        switch(m){
+            case '가위':
+                obj1.innerHTML="<img src='./images/scissor.png' width='100px'>";
+                break;
+            case '바위':
+                obj1.innerHTML="<img src='./images/rock.png' width='100px'>";
+                break;
+            case '보':
+                obj1.innerHTML="<img src='./images/paper.png' width='100px'>";
+                break;
+            default:
+                break;
+        }
+        let r = Math.floor(Math.random()*3+1);      //1~3랜덤
+        let c = '';
+        switch(r){
+            case 1:
+                c = '가위'
+                obj2.innerHTML="<img src='./images/scissor.png' width='100px'>";
+                break;
+            case 2:
+                c = '바위';
+                obj2.innerHTML="<img src='./images/rock.png' width='100px'>";
+                break;
+            case 3:
+                c = '보';
+                obj2.innerHTML="<img src='./images/paper.png' width='100px'>";
+                break;
+            default:
+                break;
+        }
+        console.log('r = ', r, 'c = ', c, ' m = ', m);
+
+        if(m==c){
+            obj3.innerHTML="<h3 style='color : green'>비겼습니다!</h3>";
+        }
+        else if(m=='가위'){
+            if(c == '바위'){
+                obj3.innerHTML="<h3 style='color : red'>당신이 졌습니다!</h3>";
+            }
+            else if(c == '보'){
+                obj3.innerHTML="<h3 style='color : blue'>당신이 이겼습니다!</h3>";
+            }
+        }
+        else if(m=='바위'){
+            if(c == '가위'){
+                obj3.innerHTML="<h3 style='color : blue'>당신이 이겼습니다!</h3>";
+            }
+            else if(c == '보'){
+                obj3.innerHTML="<h3 style='color : red'>당신이 졌습니다!</h3>";
+            }
+        }
+        else{   //보
+            if(c == '가위'){
+                obj3.innerHTML="<h3 style='color : red'>당신이 졌습니다!</h3>";
+            }
+            else if(c == '바위'){
+                obj3.innerHTML="<h3 style='color : blue'>당신이 이겼습니다!</h3>";
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- ex29Game.html -->

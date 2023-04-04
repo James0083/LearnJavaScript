@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex18for.html</title>
+</head>
+<body>
+    <!-- 실습과제(제출X) -->
+    <script>
+        function d_write(x){
+            document.write(x);
+        }
+        //[1]for루프 이용해서 1~10까지의 합과 곱을 구해 출력하세요
+		//1+2+3+....+10=55
+		//1*2*3* ....*10=3628800
+        d_write('1번 문제 : ');
+        let r = 0;
+        for(let i=1;i<=10;i++){
+            r += i;
+        }
+        document.write('<br>1~10까지의 합 : '+r);
+
+        //[2] 1~20까지 정수 중 2 또는 3의 배수가 아닌 수를
+		//출력하고, 이 수들의 총합을 구하세요.
+        d_write('<br><br>2번 문제 : ');
+        var a = 0;
+        for(let i=1;i<=20;i++){
+            if(i%2 != 0 && i%3 != 0){
+                d_write(i + ', ');
+                a += i;
+            }
+        }
+        d_write('<br>총합 : ' + a);
+
+        //[3]for루프를 이용해서 구구단의 7단을 출력해보세요
+        d_write('<br><br>3번 문제 : <br>[7단]<br>');
+        for(let i = 1;i<10;i++){
+            d_write('7x'+i+'='+(7*i)+'<br>');
+        }
+
+        //[4] prompt로 구구단의 단을 입력받아서 구구단을 table형태로 출력하세요
+        //    단, 짝수단이면 table의 배경색을 gold로 주고, 홀수단이면 skyblue로 주세요
+        d_write('<br><br>4번 문제 : <br>');
+        d_write('<button onclick="do_n4()">4번문제 실행</button>')
+        function do_n4(){
+            let t = prompt('4번 문제의 단수를 입력하세요');
+            d_write('<table>');
+            d_write('<tr><td>['+t+'단]</tr></td>');
+            for(let i = 1;i<10;i++){
+                cr = i%2?'skyblue':'gold'
+                d_write('<tr style="background-color: '+cr+';"><td>' + t + 'x'+i+'='+(7*i)+'<br>' + '</tr></td>');
+            }
+            d_write('</table>');
+        }
+
+        // -----------------
+        d_write('<button onclick="do_n4_other()">4번문제 실행 (민지 강)</button>')
+
+        function do_n4_other(){
+            input = Number(prompt("희망하는 구구단의 단을 입력하세요"));
+            if (Number.isNaN(input)){
+                alert('유효한 숫자값을 입력하세요');
+                location.reload();
+            }
+            else if(input<=0){
+                alert('양수를 입력하세요');
+                location.reload();
+            }
+            let str1;
+            if (input%2 == 0){
+            str1="<table border='1' bgcolor='gold'>";
+            }
+            else{
+                str1="<table border='1' bgcolor='skyblue'>";
+            }
+            for (var i=1; i<=10; i++){
+                str1+="<tr><th>"+i+"</th><td>"+`${input}x${i}=${input*i}<br>`+"</td></tr>";
+            }
+            str1+="</table>";
+            document.write(str1);
+        }
+
+        //[5] ex14if.html에서 작성한 성적/학점구하는 프로그램을 switch문을 이용해서
+        //    학점을 구해 출력하기
+        d_write('<br><br>5번 문제 : ')
+        d_write('<button onclick="do_n5()">5번문제 실행</button>')
+        function do_n5(){
+            let korean = prompt('국어점수를 입력하세요(실수값)');
+            let english = prompt('영어점수를 입력하세요(실수값)');
+            let math = prompt('수학점수를 입력하세요(실수값)');
+            // 취소를 누리면 null을 반환함
+            if(korean==null||english==null||math==null){
+                alert('취소를 선택해서 다시 입력받습니다.');
+                window.location.reload();
+            }
+            korean = parseFloat(korean);
+            english = parseFloat(english);
+            math = parseFloat(math);
+
+
+            let total = korean + english + math;
+            let avg = Math.round(total / 3 * 100)/100;
+            
+            let grade // 학점
+
+            switch(Math.floor(avg/10)){
+                case 9, 10:
+                    grade = 'A';
+                    break;
+                case 8:
+                    grade = 'B';
+                    break;
+                case 7:
+                    grade = 'C';
+                    break;
+                case 6:
+                    grade = 'D';
+                    break;
+                default:
+                    grade = 'F';
+                    break;
+            }
+            // alert(Math.floor(avg/10))
+
+            let str="<table border='1'>";
+                str+="<tr><th>국어</th><td>"+korean+ "</td></tr>";
+                str+="<tr><th>영어</th><td>"+english+"</td></tr>";
+                str+="<tr><th>수학</th><td>"+math+"</td></tr>";
+                str+="<tr><th>총 합계점수</th><td>"+total+"</td></tr>";
+                str+="<tr><th>평균점수</th><td>"+avg+"</td></tr>";
+                str+="<tr><th>학점</th><td>"+grade+"</td></tr>";
+                str+="</table>"
+            d_write(str);
+        }
+
+    </script>
+    
+</body>
+</html>
+<!-- ex18for.html -->

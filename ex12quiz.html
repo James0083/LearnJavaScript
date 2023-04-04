@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex12quiz.html</title>
+</head>
+<body>
+    <h1>적정 체중을 구하는 프로그램</h1>
+    <div>
+        [실습] 이름, 키, 몸무게를 prompt로 입력받아서 적정 체중을 구한뒤<br>
+        테이블 형태로 출력하세요<br>
+        이름  홍길동<br>
+        키    188cm<br>
+        몸무게 65kg<br>
+        적정체중:  kg<br>
+
+        적정체중 => (키 -100)값의 90% 정도를 적정체중으로 합니다<br>
+        
+        적정 체중을 10% 초과하면  '과체중(red)', 적정 체중 10% 미달이면 '체중 미달(blue)', <br>
+        &nbsp;&nbsp;그 외에는 '적정체중(green)'을 출력하세요<br><br>
+        <hr color="red">
+
+        <!-- 수업내용 X (개인활동) -->
+        <table border="1">
+            <tr>
+                <td>이름</td>
+                <td id="u_name"></td>
+            </tr>
+            <tr>
+                <td>키</td>
+                <td id="u_height"></td>
+            </tr>
+            <tr>
+                <td>몸무게</td>
+                <td id="u_weight"></td>
+            </tr>
+            <tr>
+                <td>적정체중</td>
+                <td id="u_proper"></td>
+            </tr>
+            <tr>
+                <td>결과</td>
+                <td id="u_result"></td>
+            </tr>
+        </table>
+        <br>
+        <!-- 수업내용 X -->
+    </div>
+
+    <script>
+
+        let Uname = window.prompt('이름을 입력하세요');
+        let Uheight = Number(window.prompt('키(cm)를 입력하세요'));
+        let Uweight = Number(window.prompt('몸무게(kg)를 입력하세요'));
+        var Uproper = (Uheight - 100) * 0.9;
+        let cr = 'black'
+        // var Uresult = (Uweight>(Uproper*1.1))?'과체중':(Uweight<(Uproper*0.9))?'체중미달':'적정체중';
+        if(Uweight>Uproper*1.1){
+            Uresult = '과체중 입니다';   //red
+            cr = 'red';
+        }
+        else if(Uweight < Uproper*0.9){
+            Uresult = '체중 미달입니다';   //blue
+            cr = 'blue';
+        }
+        else{
+            Uresult = '적정체중 입니다';   //green
+            cr = 'green';
+        }
+
+        let str="<table border='1'>";
+            str+="<tr><th>이름</th><td>"+Uname+ "</td></tr>";
+            str+="<tr><th>키</th><td>"+Uheight+" cm</td></tr>";
+            str+="<tr><th>몸무게</th><td>"+Uweight+" kg</td></tr>";
+            str+="<tr><th>적정체중</th><td>"+Uproper+" kg</td></tr>";
+            str+="<tr><th>결 과</th><td style='color:"+cr+"'>"+Uresult+"</td></tr>";
+            str+="</table>"
+        document.write(str);
+
+    // 수업내용 X (개인활동)
+        document.getElementById("u_name").innerText = Uname;
+        document.getElementById("u_height").innerText = Uheight + "cm";
+        document.getElementById("u_weight").innerText = Uweight + "kg";
+        document.getElementById("u_proper").innerText = Uproper + "kg";
+        document.getElementById("u_result").innerText = Uresult;
+        document.getElementById("u_result").style.color = cr
+        // 수업내용 X
+
+    </script>
+</body>
+</html>
+<!-- ex12quiz.html -->

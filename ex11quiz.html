@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex11quiz.html</title>
+</head>
+<body>
+    <h1>덧셈식을 브라우저에 출력하세요</h1>
+
+    <script>
+        let num1 = window.prompt('정수1을 입력하세요');
+        // document.write(num1, typeof(num1), "<br>")
+        let num2 = window.prompt('정수2을 입력하세요');
+        document.write("<h2>" + num1," + ", num2, " = ", (num1+num2) + "</h2>");
+        /*
+            string을 number로 현활할 때 사용하는 내장함수
+            [1] parseInt() : 숫자 문자열을 정수로 변환하는 함수
+            [2] parseFloat() : 숫자 문자열을 실수로 변환하는 함수
+            [3] Number() : 숫자 문자열을 숫자(정수, 실수)로 변환하는 함수
+        */
+        document.write("<h2>" + num1," + ", num2, " = ", (parseInt(num1)+parseInt(num2)) + "</h2>");
+        
+    </script>
+</body>
+</html>
+<!-- ex11quiz.html -->
